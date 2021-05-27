@@ -16,19 +16,43 @@ function Home() {
                         title="The lean startup"
                         price={29.99}
                         image="https://picsum.photos/200/300"
-                        rating={5}
-
+                        rating={3}
                     />
-                    <Product />
+                    <Product
+                        title="very nice keyboard"
+                        price={300.99}
+                        image="https://picsum.photos/200/300"
+                        rating={4}
+                    />
                 </div>
 
                 <div className="home__row">
-                    <Product />
-                    <Product />
-                    <Product />
+                    <Product
+                        title="ASUS ROG Strix G15 15.6 Gaming Laptop"
+                        price={999.99}
+                        image="https://multimedia.bbycastatic.ca/multimedia/products/500x500/153/15345/15345387_1.jpg"
+                        rating={4}
+                    />
+                    <Product
+                        title="ASUS TUF 15.6 Gaming Laptop"
+                        price={849.99}
+                        image="https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/146/14679/14679322.jpg"
+                        rating={4}
+                    />
+                    <Product
+                        title="Dell G3 15.6 Gaming Laptop"
+                        price={81399.99}
+                        image="https://multimedia.bbycastatic.ca/multimedia/products/500x500/146/14682/14682947.jpg"
+                        rating={4}
+                    />
                 </div>
                 <div className="home__row">
-                    <Product />
+                    <Product
+                        title="Dell G3 15.6 Gaming Laptop"
+                        price={81399.99}
+                        image="https://multimedia.bbycastatic.ca/multimedia/products/500x500/146/14682/14682947.jpg"
+                        rating={5}
+                    />
                 </div>
 
             </div>
