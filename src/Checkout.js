@@ -2,8 +2,7 @@ import React from 'react';
 import "./Checkout.css";
 import Subtotal from './Subtotal';
 import { useStateValue } from './StateProvider';
-import Product from './Product';
-import { getBasketTotal } from './reducer';
+import CheckoutProduct from './CheckoutProduct';
 
 function Checkout() {
     const [{ basket }, dispatch] = useStateValue();
@@ -16,29 +15,17 @@ function Checkout() {
                     src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg" alt="" />
                 <div>
                     <h2 className="checkout__tilte">Your shopping Basket</h2>
+
                     {basket.map(singleItem => (
-                        <li>
-                            <Product
-                                title={singleItem.title}
-                                price={singleItem.price}
-                                image={singleItem.image}
-                                rating={singleItem.rating}
-                            />
-                        </li>
+                        <CheckoutProduct
+                            id={singleItem.id}
+                            title={singleItem.title}
+                            price={singleItem.price}
+                            image={singleItem.image}
+                            rating={singleItem.rating}
+                        />
                     ))}
 
-                    {/* <Product
-                        title={basket[0].title}
-                        price={basket[0].price}
-                        image={basket[0].image}
-                        rating={basket[0].rating}
-                    />
-                    <Product
-                        title={basket[1].title}
-                        price={basket[1].price}
-                        image={basket[1].image}
-                        rating={basket[1].rating}
-                    /> */}
                 </div>
             </div>
 
