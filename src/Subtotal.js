@@ -11,15 +11,15 @@ function Subtotal() {
         <div className="subtotal">
             <CurrencyFormat
                 renderText={(value) => (
-                    <>
+                    <p>
                         <p>
-                            Subtotal({basket?.length} item):<strong>{value}</strong>
+                            Subtotal({basket.length} item): <strong>{value}</strong>
                         </p>
                         <small className="subtotal__gift">
                             <input type="checkbox" />
                             This order contains a gift
                         </small>
-                    </>
+                    </p>
                 )}
                 decimalScale={2}
                 value={getBasketTotal(basket)}
