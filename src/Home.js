@@ -49,7 +49,7 @@ function Home() {
                 <div className="home__row">
                     <Product
                         title="Dell G3 15.6 Gaming Laptop"
-                        price={81399.99}
+                        price={8399.99}
                         image="https://multimedia.bbycastatic.ca/multimedia/products/500x500/146/14682/14682947.jpg"
                         rating={5}
                     />
