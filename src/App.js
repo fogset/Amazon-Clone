@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 import Payment from './Payment';
-import { loadStripe } from "@stripe/stripe-js"
-import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const promise = loadStripe(
   "pk_test_51IuoBaIC9oqOH2EBYrWzYVxTp2EVRzy4WvtNrYcmnQoCSrmlnymxKMP7MvYLJbdBAT0uuMff57tvoKswnu8qrjag000KlZTWp1"
