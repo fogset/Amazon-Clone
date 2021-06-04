@@ -4,7 +4,6 @@ import Header from './Header';
 import Home from './Home';
 import Checkout from './Checkout';
 import Login from './Login';
-import Orders from "./Orders";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
@@ -20,7 +19,7 @@ function App() {
   const [{ }, dispatch] = useStateValue();
 
   useEffect(() => {
-    //will only run once when the app component loads... 4242 4242 4242 4242
+    //will only run once when the app component loads...
 
     auth.onAuthStateChanged(authUser => {
       console.log('THE USER IS >>>', authUser);
@@ -45,11 +44,6 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-
-          <Route path="/orders">
-            <Header />
-            <Orders />
-          </Route>
 
           <Route path="/login">
             <Login />
