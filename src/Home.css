@@ -15,7 +15,9 @@
 
 .home__row{
     display: flex;
+    flex-wrap: wrap;
     z-index: -1;
+    max-width: 90%;
     margin-left: 5px;
     margin-right: 5px;
 }

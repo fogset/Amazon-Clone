@@ -5,10 +5,10 @@
     text-align: center;
     justify-content: flex-end;
     margin:10px;
-    padding:20px;
-    width:100%;
+    padding:10px;
     max-height: 400px;
-    min-width: 100px;
+    min-width: 10px;
+    width:30%;
     background-color: white;
     z-index: 1;
 }
