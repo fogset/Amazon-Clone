@@ -20,8 +20,12 @@ const AddProducts = () => {
             ProductName: productName,
             ProductPrice: Number(productPrice),
             ProductImg: productImg
+        }).then(() => {
+            setProductName('');
+            setProductPrice(0)
+            setProductImg('');
         })
-    };
+    }
 
 
     return (

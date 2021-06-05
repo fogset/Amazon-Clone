@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Home.css";
 import Product from './Product';
+import { db } from './firebase';
 
 function Home() {
+
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    function getProducts() {
+        setLoading(true);
+        db.collection("products").onSnapshot((querySnapshot) => {
+            const items = [];
+            querySnapshot.forEach((doc) => {
+                items.push(doc.data());
+            });
+            setProducts(items);
+            setLoading(false);
+        });
+    }
+
+    useEffect(() => {
+        getProducts();
+        console.log("load from firestore ----------------");
+        console.log(products);
+    }, []);
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <div className="home">
             <div className="home__containers">
@@ -13,9 +40,9 @@ function Home() {
 
                 <div className="home__row">
                     <Product
-                        title="The lean startup"
-                        price={29.99}
-                        image="https://picsum.photos/200/300"
+                        title={products ? products[0].ProductName : null}
+                        price={products ? products[0].ProductPrice : null}
+                        image={products ? products[0].ProductImg : null}
                         rating={3}
                     />
                     <Product
@@ -58,6 +85,7 @@ function Home() {
             </div>
         </div>
     )
+
 }
 
 export default Home
