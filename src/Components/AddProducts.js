@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
-import { storage, db } from '../firebase'
+import { db } from '../firebase';
+
 import "./AddProducts.css";
 
 
@@ -8,48 +9,19 @@ const AddProducts = () => {
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
-    const [productImg, setProductImg] = useState(null);
-    const [error, setError] = useState('');
+    const [productImg, setProductImg] = useState(null)
 
-    const types = ['image/png', 'image/jpeg']; // image types
-
-    //product image handler
-    const productImgHandler = (e) => {
-        let selectedFile = e.target.files[0];
-        if (selectedFile && types.includes(selectedFile.type)) {
-            setProductImg(selectedFile);
-            setError('')
-        }
-        else {
-            setProductImg(null);
-            setError('Please select a valid image type (jpg or png)');
-        }
-    }
-
-    // add product
+    //add product from submit event
     const addProduct = (e) => {
         e.preventDefault();
-        const uploadTask = storage.ref(`product-images/${productImg.name}`).put(productImg);
-        uploadTask.on('state_changed', snapshot => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log(progress);
-        }, err => setError(err.message)
-            , () => {
-                storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
-                    db.collection('Products').add({
-                        ProductName: productName,
-                        ProductPrice: Number(productPrice),
-                        ProductImg: url
-                    }).then(() => {
-                        setProductName('');
-                        setProductPrice(0)
-                        setProductImg('');
-                        setError('');
-                        document.getElementById('file').value = '';
-                    }).catch(err => setError(err.message))
-                })
-            })
-    }
+        console.log("product information ----------------");
+        console.log(productName, productPrice, productImg);
+        db.collection("products").add({
+            ProductName: productName,
+            ProductPrice: Number(productPrice),
+            ProductImg: productImg
+        })
+    };
 
 
     return (
@@ -64,13 +36,16 @@ const AddProducts = () => {
                     onChange={(e) => setProductName(e.target.value)} value={productName}
                 />
 
+
                 <label htmlFor="product-price"> Product Price</label>
                 <input type="number" className='form-control' required
                     onChange={(e) => setProductPrice(e.target.value)} value={productPrice}
                 />
 
-                <label htmlFor="product-img"> Product Image</label>
-                <input type="file" id="file" onChange={productImgHandler} />
+                <label htmlFor="product-img"> Product Image Url</label>
+                <input type="text" className='form-control' required
+                    onChange={(e) => setProductImg(e.target.value)} value={productImg}
+                />
 
                 <button >Add </button>
             </form>
