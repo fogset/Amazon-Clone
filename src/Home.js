@@ -51,14 +51,6 @@ function Home() {
 
                 </div>
 
-                <div className="home__row">
-                    <Product
-                        title={products[0] && products[0].ProductName}
-                        price={products[0] && products[0].ProductPrice}
-                        image={products[0] && products[0].ProductImg}
-                        rating={3}
-                    />
-                </div>
 
 
             </div>
