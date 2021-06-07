@@ -3,13 +3,11 @@ import "./Home.css";
 import Product from './Product';
 import { db } from './firebase';
 
-function Home() {
 
+function Home() {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     function getProducts() {
-        setLoading(true);
 
         db.collection("products").get()
             .then(snapshot => {
@@ -31,7 +29,6 @@ function Home() {
     }, []);
 
 
-
     return (
         <div className="home">
             <div className="home__containers">
@@ -45,13 +42,12 @@ function Home() {
                             title={product.ProductName}
                             price={product.ProductPrice}
                             image={product.ProductImg}
+                            id={product.uid}
                             rating={3}
                         />
                     ))}
 
                 </div>
-
-
 
             </div>
         </div >

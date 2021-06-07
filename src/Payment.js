@@ -39,6 +39,7 @@ function Payment() {
 
     console.log('THE SECRET IS>>>', clientSecret);
     console.log('👱', user)
+    console.log('basket', basket)
 
 
     const handleSubmit = async (event) => {
@@ -63,6 +64,26 @@ function Payment() {
             //         amount: paymentIntent.amount,
             //         created: paymentIntent.created
             //     })
+            const productIdList = [];
+            {
+                basket.map(product => (
+                    productIdList.push(product.id)
+                ))
+            }
+            db.collection("users")
+                .doc(user.email)
+                .collection('orders')
+                .doc(paymentIntent.id).set({
+                    shoppingCart: productIdList,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
+                })
+                .then(() => {
+                    console.log("Document successfully written!");
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
 
             setSucceeded(true);
             setError(null)
