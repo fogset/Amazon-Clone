@@ -22,6 +22,7 @@ function Payment() {
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState(true);
+    var amount = Math.round(getBasketTotal(basket) * 100);
 
     useEffect(() => {
         // generate the special stripe secret which allows us to charge a customer
@@ -29,7 +30,7 @@ function Payment() {
             const response = await axios({
                 method: 'post',
                 // Stripe expects the total in a currencies subunits
-                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+                url: `/payments/create?total=${amount}`
             });
             setClientSecret(response.data.clientSecret)
         }
@@ -52,16 +53,16 @@ function Payment() {
         }).then(({ paymentIntent }) => {
             // paymentIntent = payment confirmation
 
-            db
-                .collection('users')
-                .doc(user.uid)
-                .collection('orders')
-                .doc(paymentIntent.id)
-                .set({
-                    basket: basket,
-                    amount: paymentIntent.amount,
-                    created: paymentIntent.created
-                })
+            // db
+            //     .collection('users')
+            //     .doc(user.uid)
+            //     .collection('orders')
+            //     .doc(paymentIntent.id)
+            //     .set({
+            //         basket: basket,
+            //         amount: paymentIntent.amount,
+            //         created: paymentIntent.created
+            //     })
 
             setSucceeded(true);
             setError(null)
