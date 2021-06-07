@@ -73,7 +73,8 @@ function Payment() {
             db.collection("users")
                 .doc(user.email)
                 .collection('orders')
-                .doc(paymentIntent.id).set({
+                .doc(paymentIntent.id)
+                .set({
                     shoppingCart: productIdList,
                     amount: paymentIntent.amount,
                     created: paymentIntent.created
