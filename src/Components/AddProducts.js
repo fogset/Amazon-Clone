@@ -6,6 +6,7 @@ import "./AddProducts.css";
 
 
 const AddProducts = () => {
+    const { uuid } = require('uuidv4');
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
@@ -19,7 +20,8 @@ const AddProducts = () => {
         db.collection("products").add({
             ProductName: productName,
             ProductPrice: Number(productPrice),
-            ProductImg: productImg
+            ProductImg: productImg,
+            uid: uuid()
         }).then(() => {
             setProductName('');
             setProductPrice(0)
