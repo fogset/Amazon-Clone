@@ -6,7 +6,6 @@ import { db } from './firebase';
 
 function Home() {
     const [products, setProducts] = useState([]);
-
     function getProducts() {
 
         db.collection("products").get()
@@ -16,7 +15,6 @@ function Home() {
                     items.push(doc.data());
                 })
                 setProducts(items);
-
             })
             .catch(error => console.log(error))
     }
@@ -26,7 +24,6 @@ function Home() {
         // console.log("load from firestore ----------------");
         // console.log(products);
     }, []);
-
 
     return (
         <div className="home">
@@ -55,7 +52,6 @@ function Home() {
 }
 
 export default Home
-
 
 
 
