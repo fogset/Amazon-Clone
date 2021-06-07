@@ -27,17 +27,18 @@ function Orders() {
         }
         // console.log('THE ORDER IS>>>', orders);
 
-        db.collection("products").get()
-            .then(snapshot => {
-                const items = [];
-                snapshot.forEach(doc => {
-                    items.push(doc.data());
+        if (user) {
+            db.collection("products").get()
+                .then(snapshot => {
+                    const items = [];
+                    snapshot.forEach(doc => {
+                        items.push(doc.data());
+                    })
+                    setProducts(items);
                 })
-                setProducts(items);
-            })
-            .catch(error => console.log(error))
-
-        console.log('THE product IS>>>', products);
+                .catch(error => console.log(error))
+        }
+        // console.log('THE product IS>>>', products);
 
 
     }, [user])

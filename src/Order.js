@@ -35,6 +35,7 @@ function Order({ order, products }) {
                     hideButton
                 />
             ))}
+
             <CurrencyFormat
                 renderText={(value) => (
                     <h3 className="order__total">Order Total: {value}</h3>
