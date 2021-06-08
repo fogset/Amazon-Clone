@@ -21,7 +21,7 @@ function App() {
   const [{ }, dispatch] = useStateValue();
 
   useEffect(() => {
-    //will only run once when the app component loads... 4242 4242 4242 4242
+    //will only run once when the app component loads... 
 
     auth.onAuthStateChanged(authUser => {
       // console.log('THE USER IS >>>', authUser);

@@ -142,8 +142,7 @@ function Payment() {
                     </div>
                 </div>
 
-
-                {/* Payment section - Payment method */}
+                {/* Payment section - Payment method test credit card 4242 4242 4242 4242*/}
                 <div className='payment__section'>
                     <div className="payment__title">
                         <h3>Payment Method</h3>
