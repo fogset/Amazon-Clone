@@ -54,7 +54,7 @@ function App() {
           </Route>
 
           <Route path="/orders">
-            <Header />
+            <Header onChange={value => setSearchTerm(value)} />
             <Orders />
           </Route>
 
@@ -63,12 +63,12 @@ function App() {
           </Route>
 
           <Route path="/checkout">
-            <Header />
+            <Header onChange={value => setSearchTerm(value)} />
             <Checkout />
           </Route>
 
           <Route path="/payment">
-            <Header />
+            <Header onChange={value => setSearchTerm(value)} />
             <Elements stripe={promise}>
               <Payment />
             </Elements>
