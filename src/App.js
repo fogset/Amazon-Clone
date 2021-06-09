@@ -76,7 +76,7 @@ function App() {
 
           <Route path="/">
             <Header onChange={value => setSearchTerm(value)} />
-            <h1>Hello {searchTerm}</h1>
+            {/* <h1>show typed {searchTerm}</h1> */}
             <Home searchTerm={searchTerm} />
           </Route>
 
