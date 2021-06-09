@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 import Header from './Header';
 import Home from './Home';
@@ -41,6 +41,8 @@ function App() {
     })
   }, [])
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     //BEM
     <Router>
@@ -73,10 +75,10 @@ function App() {
           </Route>
 
           <Route path="/">
-            <Header />
-            <Home />
+            <Header onChange={value => setSearchTerm(value)} />
+            <h1>Hello {searchTerm}</h1>
+            <Home searchTerm={searchTerm} />
           </Route>
-
 
         </Switch>
 

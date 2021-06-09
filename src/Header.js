@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { useStateValue } from './StateProvider';
 import { auth } from "./firebase"
 
-function Header() {
+function Header(searchTerm) {
 
     const [{ basket, user }, dispatch] = useStateValue();
     const handleAuthentication = () => {
@@ -28,6 +28,9 @@ function Header() {
                 <input
                     className="header__searchInput"
                     type="text"
+                    onChange={event => {
+                        searchTerm.onChange(event.target.value)
+                    }}
                 />
                 <SearchIcon className="header__searchIcon" />
             </div>
